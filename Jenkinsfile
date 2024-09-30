@@ -4,7 +4,7 @@ pipeline {
         stage ('SCM checkout') {
             steps {
                 script{
-                     git url: 'https://github.com/pavangit-lab/ecs-proj.git'
+                     git url: 'https://github.com/Raj781204/DevOps-project.git'
                 }
             }
         }
@@ -28,7 +28,7 @@ pipeline {
         stage('Docker Build Images') {
             steps {
                 script {
-                    sh 'docker build -t dockerhub1010/helm-rockets:v1 .'
+                    sh 'docker build -t docker781204/helm-rockets:v1 .'
                     sh 'docker images'
                 }
             }
@@ -37,8 +37,8 @@ pipeline {
             steps {
                 script {
                     withCredentials([string(credentialsId: 'dockerPass', variable: 'dockerPassword')]) {
-                        sh "docker login -u dockerhub1010 -p ${dockerPassword}"
-                        sh 'docker push dockerhub1010/helm-rockets:v1'
+                        sh "docker login -u docker781204 -p ${dockerPassword}"
+                        sh 'docker push docker781204/helm-rockets:v1'
                     }
                 }
             }
