@@ -28,7 +28,7 @@ pipeline {
         stage('Docker Build Images') {
             steps {
                 script {
-                    sh 'docker build -t docker781204/helm-rockets:v1 .'
+                    sh 'docker build -t dinesh781204/helm-rockets:v1 .'
                     sh 'docker images'
                 }
             }
@@ -37,8 +37,8 @@ pipeline {
             steps {
                 script {
                     withCredentials([string(credentialsId: 'dockerPass', variable: 'dockerPassword')]) {
-                        sh "docker login -u docker781204 -p ${dockerPassword}"
-                        sh 'docker push docker781204/helm-rockets:v1'
+                        sh "docker login -u dinesh781204 -p ${dockerPassword}"
+                        sh 'docker push dinesh781204/helm-rockets:v1'
                     }
                 }
             }
